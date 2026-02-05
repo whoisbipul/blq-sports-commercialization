@@ -1,595 +1,178 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>How Sports Commercialization Works — BLQ</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sports Commercialization — BLQ</title>
 
-    <!-- Reveal.js (CDN) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
 
-    <style>
-      :root{
-  --card: rgba(0,0,0,0.04);
-  --stroke: rgba(0,0,0,0.10);
-  --muted: rgba(0,0,0,0.55);
-}
+  <style>
+    :root{
+      --brand: rgb(220,38,38);
+      --ink: #0f172a;
+      --muted: rgba(15,23,42,0.62);
+      --card: rgba(255,255,255,0.86);
+      --stroke: rgba(15,23,42,0.12);
+    }
 
-.reveal{
-  color: #111827;
-}
+    .reveal{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+    }
+    .reveal .slides{ text-align: left; }
 
-.reveal .slides{
-  text-align: left;
-}
+    /* Background vibe */
+    .reveal-viewport{
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(220,38,38,0.10), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(220,38,38,0.08), transparent 55%),
+        linear-gradient(180deg, #ffffff, #f7f7fb);
+    }
 
-.reveal section{
-  background: linear-gradient(180deg, rgba(220,38,38,0.06), rgba(255,255,255,0));
-}
+    /* Broadcast topbar */
+    .topbar{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 22px;
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid var(--stroke);
+      backdrop-filter: blur(10px);
+      z-index: 999999;
+    }
+    .topbar img{ height: 38px; width: auto; }
+    .topbar .title{
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(15,23,42,0.55);
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-.card{
-  background: rgba(255,255,255,0.85);
-  border: 1px solid var(--stroke);
-  border-radius: 18px;
-  padding: .9em 1em;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-}
+    /* Make room for the bar */
+    .reveal{ margin-top: 52px; }
 
-.callout{
-  margin-top: .8em;
-  padding: .8em 1em;
-  border: 1px solid rgba(220,38,38,0.25);
-  border-radius: 18px;
-  background: rgba(220,38,38,0.06);
-}
+    /* Typography */
+    h1{
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-top: 0.2em;
+    }
+    h2{
+      font-weight: 950;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      border-left: 8px solid rgba(220,38,38,0.85);
+      padding-left: 14px;
+      margin-left: -14px;
+      margin-bottom: .4em;
+    }
+    h3{ font-weight: 850; letter-spacing: -0.01em; }
 
-.kicker{
-  color: rgba(0,0,0,0.55);
-}
+    .muted{ color: var(--muted); }
 
-.subtitle, .muted{
-  color: rgba(0,0,0,0.60);
-}
- }
-      .meta{ display:flex; gap:.6em; align-items:center; color: var(--muted); font-size:.65em; margin-top: 1em; }
-      .dot{ opacity:.6; }
-      .muted{ color: var(--muted); }
-      .small{ font-size:.65em; }
-      .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: .7em; }
-      .card{
-        background: var(--card);
-        border: 1px solid var(--stroke);
-        border-radius: 18px;
-        padding: .9em 1em;
-      }
-      ul.clean{ list-style:none; padding-left:0; margin:.4em 0 0; }
-      ul.clean li{ margin:.35em 0; color: rgba(255,255,255,0.88); }
-      .callout{
-        margin-top: .8em;
-        padding: .8em 1em;
-        border: 1px solid var(--stroke);
-        border-radius: 18px;
-        background: rgba(255,255,255,0.04);
-      }
-      .big-equation{
-        display:flex; flex-wrap:wrap; gap:.5em;
-        align-items:baseline;
-        padding:.6em .8em;
-        border: 1px solid var(--stroke);
-        border-radius: 18px;
-        background: rgba(255,255,255,0.04);
-        margin: .6em 0 .2em;
-        font-size: 1.05em;
-      }
-      .eq{ opacity:.85; font-weight:700; }
-      .arrow{ opacity:.8; }
-.corner-logo{
-  position: fixed;
-  top: 18px;
-  left: 22px;
-  height: 42px;
-  width: auto;
-  z-index: 99999;
-  opacity: 0.95;
-  pointer-events: none;
-}
-/* ===== Sporty Bold Upgrade ===== */
-.reveal h1{
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
-  text-transform: uppercase;
-}
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 18px 18px;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.10);
+    }
+    ul.clean{
+      list-style:none;
+      padding-left:0;
+      margin: 10px 0 0;
+    }
+    ul.clean li{ margin: 8px 0; }
 
-.reveal h2{
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  border-left: 8px solid rgba(220,38,38,0.85);
-  padding-left: 14px;
-  margin-left: -14px;
-}
+    .callout{
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(220,38,38,0.22);
+      background: rgba(220,38,38,0.06);
+    }
+    .callout b{ color: var(--brand); }
 
-.reveal h3{
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
+    /* Prevent ugly word breaks */
+    h1, h2{
+      word-break: normal !important;
+      overflow-wrap: normal !important;
+      hyphens: none !important;
+    }
+  </style>
+</head>
 
-.subtitle{
-  font-size: 1.1em;
-}
+<body>
+  <!-- Top bar (uses your existing assets/logo.png) -->
+  <div class="topbar">
+    <img src="./assets/logo.png" alt="Brand Logiq">
+    <div class="title">Brand Logiq Pvt. Ltd. — Sports Team</div>
+  </div>
 
-.card{
-  border: 1px solid rgba(0,0,0,0.12);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
+  <div class="reveal">
+    <div class="slides">
 
-.callout b{
-  color: rgb(220,38,38);
-}
+      <section>
+        <div class="muted" style="letter-spacing:.14em;text-transform:uppercase;font-weight:800;font-size:.65em;">
+          Internal Training Deck
+        </div>
+        <h1>How Sports<br/>Commercialization<br/>Actually Works</h1>
+        <p class="muted" style="font-size:1.12em;max-width:60ch;">
+          Sports is a product. Rights are inventory. Fans are the currency. Brands pay for outcomes.
+        </p>
 
-.big-equation{
-  border: 1px solid rgba(220,38,38,0.20);
-  background: rgba(220,38,38,0.05);
-}
-
-/* Make SVG visuals match light theme */
-svg .b{
-  fill: rgba(255,255,255,0.9) !important;
-  stroke: rgba(0,0,0,0.14) !important;
-}
-svg .t{
-  fill: #111827 !important;
-}
-svg .s{
-  fill: rgba(17,24,39,0.62) !important;
-}
-svg .a{
-  stroke: rgba(17,24,39,0.35) !important;
-}
-
-/* Stronger logo presence */
-.corner-logo{
-  height: 46px;
-  top: 16px;
-  left: 18px;
-  opacity: 1;
-}
-/* Fix awkward word breaks on big titles */
-.reveal h1, .reveal h2{
-  word-break: normal !important;
-  overflow-wrap: normal !important;
-  hyphens: none !important;
-}
-
-/* Slightly reduce the giant title size so it fits cleanly */
-.reveal h1{
-  font-size: 2.05em;
-}
-
-/* Make slide layout breathe a bit more on smaller screens */
-.reveal .slides{
-  max-width: 1200px;
-}
-
-    </style>
-  </head>
-
-  <body>
-    <img class="corner-logo" src="./assets/logo.png" alt="Logo" />
-    <div class="reveal">
-      <div class="slides">
-
-        <!-- Slide 1: Title -->
-        <section>
-          <div class="kicker">Brand Logiq Pvt. Ltd. — Sports Team</div>
-          <h1>How Sports Commercialization Actually Works</h1>
-          <p class="subtitle">Sports is a product. Rights are inventory. Fans are the currency. Brands pay for outcomes.</p>
-
-          <div class="grid2">
-            <div class="card">
-              <h3>What you’ll learn</h3>
-              <ul class="clean">
-                <li>The sports “money machine”</li>
-                <li>What inventory we sell (beyond ads)</li>
-                <li>How deals are packaged + priced</li>
-                <li>How we prove value with reporting</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>One-line formula</h3>
-              <p class="muted">Sports Commercialization = (Audience × Emotion × Access) → Monetization</p>
-              <div class="callout">
-                <b>Goal:</b> turn passion into predictable revenue.
-              </div>
-            </div>
+        <div class="grid2">
+          <div class="card">
+            <h3>What you’ll learn</h3>
+            <ul class="clean">
+              <li>How the sports money machine works</li>
+              <li>What inventory we sell (beyond ads)</li>
+              <li>How deals are packaged + priced</li>
+              <li>How we report value</li>
+            </ul>
           </div>
-
-          <div class="meta">
-            <span>Presenter: Head of Sports</span><span class="dot">•</span>
-            <span>BLQ / DGO Ecosystem</span><span class="dot">•</span>
-            <span class="muted small">Press F fullscreen • Arrow keys to navigate</span>
+          <div class="card">
+            <h3>One-line formula</h3>
+            <div class="callout">
+              <b>(Audience × Emotion × Access)</b> → Monetization
+            </div>
+            <p class="muted" style="margin-top:10px;">
+              Goal: turn passion into predictable revenue.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Slide 2: Mental Model -->
-        <section>
-          <h2>The Simplest Mental Model</h2>
-          <div class="big-equation">
-            <span><b>Sports Commercialization</b></span>
-            <span class="eq">=</span>
-            <span>(Audience × Emotion × Access)</span>
-            <span class="arrow">→</span>
-            <span><b>Monetization</b></span>
-          </div>
-
-          <div class="grid2">
-            <div class="card">
-              <h3>Audience</h3>
-              <ul class="clean">
-                <li>How many people?</li>
-                <li>Who are they (profile)?</li>
-                <li>Minutes watched matters</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Emotion</h3>
-              <ul class="clean">
-                <li>Derby / rivalry spikes attention</li>
-                <li>Live moments are less skippable</li>
-                <li>Community identity = value</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Access</h3>
-              <ul class="clean">
-                <li>OTT + bundles + promos</li>
-                <li>UX & discoverability are product</li>
-                <li>Availability drives reach</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Monetization</h3>
-              <ul class="clean">
-                <li>Rights / Ads / Sponsorship</li>
-                <li>Subs / Data / Partnerships</li>
-                <li>Merch / on-ground (if owned)</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- Slide 3: Inventory -->
-        <section>
-          <h2>What We Actually Sell: Inventory</h2>
-          <p class="muted">Commercialization starts when we clearly define what we can sell, how scarce it is, and how we measure it.</p>
-
-          <div class="grid2">
-            <div class="card">
-              <h3>Rights Inventory</h3>
-              <ul class="clean">
-                <li>Exclusive/non-exclusive digital</li>
-                <li>Linear + OTT + highlights + clips</li>
-                <li>Catch-up / VOD / delayed</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Ad Inventory</h3>
-              <ul class="clean">
-                <li>Pre/mid/post-roll</li>
-                <li>Overlays, bugs, L-band</li>
-                <li>Segments (studio, analysis)</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Sponsorship Assets</h3>
-              <ul class="clean">
-                <li>Title sponsor, powered-by</li>
-                <li>“Player of Match”, “Best Play”</li>
-                <li>Category exclusivity</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Digital + Data</h3>
-              <ul class="clean">
-                <li>Social clips + creators</li>
-                <li>Registrations, CRM, retention</li>
-                <li>Bundles: telco / ISP / device</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="callout">
-            <b>Shift in mindset:</b> stop saying “we’ll sell sponsorship” → start saying “we have X units of inventory and Y high-impact moments.”
-          </div>
-        </section>
-<!-- Slide 4: Value Chain (Visual) -->
-<section>
-  <h2>The Sports Value Chain</h2>
-  <p class="muted">Who pays whom — and where BLQ creates leverage.</p>
-
-  <div class="card">
-    <svg viewBox="0 0 1100 360" role="img" aria-label="Sports value chain diagram" style="width:100%; height:auto;">
-      <defs>
-        <style>
-          .b{fill:#111827;stroke:#374151;stroke-width:2;rx:18;ry:18}
-          .t{fill:#e5e7eb;font:700 20px system-ui, -apple-system, Segoe UI, Roboto, Arial}
-          .s{fill:#9ca3af;font:400 14px system-ui, -apple-system, Segoe UI, Roboto, Arial}
-          .a{stroke:#6b7280;stroke-width:3;marker-end:url(#m)}
-        </style>
-        <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-          <path d="M0,0 L12,6 L0,12 Z" fill="#6b7280"></path>
-        </marker>
-      </defs>
-
-      <rect class="b" x="30" y="60" width="240" height="120"></rect>
-      <text class="t" x="55" y="105">IP Owner</text>
-      <text class="s" x="55" y="135">League / Federation</text>
-
-      <rect class="b" x="300" y="60" width="240" height="120"></rect>
-      <text class="t" x="325" y="105">Rights Partner</text>
-      <text class="s" x="325" y="135">Agency / Packaging</text>
-
-      <rect class="b" x="570" y="60" width="240" height="120"></rect>
-      <text class="t" x="595" y="105">Broadcaster / OTT</text>
-      <text class="s" x="595" y="135">Takes monetization risk</text>
-
-      <rect class="b" x="840" y="60" width="240" height="120"></rect>
-      <text class="t" x="865" y="105">Brands</text>
-      <text class="s" x="865" y="135">Buy outcomes</text>
-
-      <rect class="b" x="435" y="220" width="240" height="120"></rect>
-      <text class="t" x="460" y="265">Fans</text>
-      <text class="s" x="460" y="295">Money + Time + Data</text>
-
-      <line class="a" x1="270" y1="120" x2="300" y2="120"></line>
-      <line class="a" x1="540" y1="120" x2="570" y2="120"></line>
-      <line class="a" x1="810" y1="120" x2="840" y2="120"></line>
-
-      <line class="a" x1="690" y1="180" x2="560" y2="220"></line>
-      <line class="a" x1="560" y1="280" x2="570" y2="180"></line>
-
-      <text class="s" x="335" y="45">Rights packaging</text>
-      <text class="s" x="585" y="45">Distribution</text>
-      <text class="s" x="865" y="45">Sponsorship / Ads</text>
-
-      <text class="s" x="615" y="210">Content</text>
-      <text class="s" x="615" y="330">Engagement → Revenue</text>
-    </svg>
-  </div>
-
-  <div class="callout">
-    <b>Key idea:</b> Rights aren’t expensive. <b>Uncertainty</b> is expensive. We reduce uncertainty with packaging + distribution + measurement.
-  </div>
-
-  <aside class="notes">
-    Make it interactive: ask “who takes the risk?” Answer: broadcaster/OTT. Then explain BLQ role = reduce risk by designing monetization plan.
-  </aside>
-</section>
-
-<!-- Slide 5: Revenue Engines (Visual) -->
-<section>
-  <h2>The 4 Revenue Engines</h2>
-  <p class="muted">Most deals are mixed bundles — not a single revenue line.</p>
-
-  <div class="card">
-    <svg viewBox="0 0 1100 300" role="img" aria-label="4 revenue engines" style="width:100%; height:auto;">
-      <defs>
-        <style>
-          .c{fill:#111827;stroke:#374151;stroke-width:2;rx:22;ry:22}
-          .h{fill:#e5e7eb;font:800 22px system-ui, -apple-system, Segoe UI, Roboto, Arial}
-          .p{fill:#9ca3af;font:400 14px system-ui, -apple-system, Segoe UI, Roboto, Arial}
-        </style>
-      </defs>
-
-      <rect class="c" x="30" y="50" width="250" height="200"></rect>
-      <text class="h" x="55" y="110">1) Rights</text>
-      <text class="p" x="55" y="145">Fees / sublicensing</text>
-      <text class="p" x="55" y="170">territory, exclusivity</text>
-
-      <rect class="c" x="310" y="50" width="250" height="200"></rect>
-      <text class="h" x="335" y="110">2) Ads</text>
-      <text class="p" x="335" y="145">CPM, bundles, delivery</text>
-      <text class="p" x="335" y="170">inventory × reach</text>
-
-      <rect class="c" x="590" y="50" width="250" height="200"></rect>
-      <text class="h" x="615" y="110">3) Sponsors</text>
-      <text class="p" x="615" y="145">association + storytelling</text>
-      <text class="p" x="615" y="170">exclusivity + moments</text>
-
-      <rect class="c" x="870" y="50" width="250" height="200"></rect>
-      <text class="h" x="895" y="110">4) Subs</text>
-      <text class="p" x="895" y="145">event-led acquisition</text>
-      <text class="p" x="895" y="170">retention strategy</text>
-    </svg>
-  </div>
-
-  <div class="callout">
-    <b>Shortcut:</b> If rights fee is high, we must design a stronger mix of sponsors + subs + ads.
-  </div>
-
-  <aside class="notes">
-    Mention: for Nepal, subscription spikes are event-led; plan retention using follow-up content or bundles.
-  </aside>
-</section>
-
-<!-- Slide 6: Packaging -->
-<section>
-  <h2>Packaging: How a Deal Is Built</h2>
-
-  <div class="grid2">
-    <div class="card">
-      <h3>What we promise</h3>
-      <ul class="clean">
-        <li><b>Audience:</b> reach + minutes watched</li>
-        <li><b>Distribution:</b> where it appears + discoverability</li>
-        <li><b>Integration:</b> moments the brand can own</li>
-        <li><b>Measurement:</b> reports + proof of delivery</li>
-        <li><b>Exclusivity:</b> category locks</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Core principle</h3>
-      <p style="font-size:1.05em; line-height:1.35; margin:.2em 0 .6em;">
-        “A sponsor doesn’t buy logo space. They buy permission to borrow fandom.”
-      </p>
-      <p class="muted small">Packaging beats pricing. Measurement builds pricing power.</p>
-      <div class="callout" style="margin-top:.7em;">
-        <b>Tip:</b> Sell “moments” (high emotion) more than “minutes”.
-      </div>
     </div>
   </div>
 
-  <aside class="notes">
-    Explain category exclusivity and why it increases value massively for certain brands.
-  </aside>
-</section>
-
-<!-- Slide 7: Pricing -->
-<section>
-  <h2>Pricing: 3 Defensible Anchors</h2>
-
-  <div class="grid2">
-    <div class="card">
-      <h3>1) Cost-plus</h3>
-      <ul class="clean">
-        <li>Rights fee + production + marketing</li>
-        <li>Add margin based on risk</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>2) CPM benchmark</h3>
-      <ul class="clean">
-        <li>Impressions × CPM equivalent</li>
-        <li>Adjust for live & premium moments</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>3) Outcome-based</h3>
-      <ul class="clean">
-        <li>Installs, trials, subs, leads</li>
-        <li>Performance bonus tiers</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Reality check</h3>
-      <ul class="clean">
-        <li>Pricing is a <b>story backed by evidence</b></li>
-        <li>Evidence = audience history + market benchmarks + delivery plan</li>
-      </ul>
-    </div>
-  </div>
-
-  <aside class="notes">
-    If asked “what CPM?” say: we benchmark but we price moments + exclusivity, not just impressions.
-  </aside>
-</section>
-
-<!-- Slide 8: Measurement -->
-<section>
-  <h2>Measurement & Reporting (How We Prove Value)</h2>
-
-  <div class="grid2">
-    <div class="card">
-      <h3>Must report</h3>
-      <ul class="clean">
-        <li>Reach: unique viewers</li>
-        <li>Engagement: minutes watched, completion</li>
-        <li>Conversion: installs, trials, subs</li>
-        <li>Delivery proof: logs, screenshots</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Why it matters</h3>
-      <p style="font-size:1.05em; line-height:1.35; margin:.2em 0 .6em;">
-        “What we can measure, we can sell again — at a higher price.”
-      </p>
-      <div class="callout">
-        <b>Commercialization flywheel:</b> Measure → Report → Trust → Renew → Higher pricing
-      </div>
-    </div>
-  </div>
-
-  <aside class="notes">
-    Mention that measurement is how BLQ becomes “premium” vs generic brokers.
-  </aside>
-</section>
-
-<!-- Slide 9: BLQ Roles -->
-<section>
-  <h2>Commercialization Is a Team Sport</h2>
-
-  <div class="grid2">
-    <div class="card">
-      <h3>Who does what</h3>
-      <ul class="clean">
-        <li><b>Rights:</b> valuation + negotiation</li>
-        <li><b>Programming:</b> fit + scheduling</li>
-        <li><b>Production:</b> quality + cost control</li>
-        <li><b>Sales:</b> ads + sponsors</li>
-        <li><b>Marketing:</b> demand + conversion</li>
-        <li><b>Data/Tech:</b> measurement + retention</li>
-        <li><b>Finance/Legal:</b> risk + contracting</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Working rule</h3>
-      <p style="font-size:1.05em; line-height:1.35; margin:.2em 0 .6em;">
-        “Rights are the fuel. Distribution is the engine. Measurement is the dashboard.”
-      </p>
-      <div class="callout">
-        <b>BLQ advantage:</b> we can connect rights → distribution → brand outcomes in one plan.
-      </div>
-    </div>
-  </div>
-
-  <aside class="notes">
-    Ask the team: “Which part do you own?” Make it personal.
-  </aside>
-</section>
-
-<!-- Slide 10: Closing -->
-<section>
-  <h2>5 Rules of the Game</h2>
-  <ol style="font-size:1.02em; line-height:1.55;">
-    <li><b>Scarcity sells</b> (limited matches, limited exclusivity)</li>
-    <li><b>Packaging beats pricing</b></li>
-    <li><b>Distribution is product</b> (UX + access)</li>
-    <li><b>Sponsors buy stories</b>, not spots</li>
-    <li><b>Measurement builds pricing power</b></li>
-  </ol>
-
-  <div class="callout">
-    <b>Final line:</b> Our job is to turn passion into predictable revenue.
-  </div>
-
-  <aside class="notes">
-    Close with a quick Q&A and suggest next: create a BLQ “commercialization canvas” template per property.
-  </aside>
-</section>
-
-      </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
-
-<script>
-  Reveal.initialize({
-    hash: true,
-    slideNumber: true,
-    transition: "slide",
-    plugins: [ RevealNotes ]
-  });
-</script>
-
-    <script>
-      Reveal.initialize({
-        hash: true,
-        slideNumber: true,
-        transition: "slide"
-      });
-    </script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      transition: "slide",
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
 </html>
