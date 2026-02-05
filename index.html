@@ -61,6 +61,26 @@
       }
       .eq{ opacity:.85; font-weight:700; }
       .arrow{ opacity:.8; }
+    /* Corner logo on every slide */
+.reveal::before{
+  content:"";
+  position: fixed;
+  top: 22px;
+  left: 26px;
+  width: 140px;
+  height: 42px;
+  background: url("./assets/logo.png") no-repeat left center;
+  background-size: contain;
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Give headings a bit of breathing room so the logo never overlaps */
+.reveal h1, .reveal h2{
+  padding-top: 24px;
+}
+
     </style>
   </head>
 
