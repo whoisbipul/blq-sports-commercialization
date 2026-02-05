@@ -7,28 +7,51 @@
 
     <!-- Reveal.js (CDN) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
 
     <style>
       :root{
-        --card: rgba(255,255,255,0.06);
-        --stroke: rgba(255,255,255,0.12);
-        --muted: rgba(255,255,255,0.65);
-      }
-      .reveal{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-      .reveal .slides{ text-align: left; }
-      h1,h2,h3{ letter-spacing:-0.02em; }
-      h1{ font-size: 2.3em; }
-      h2{ font-size: 1.7em; margin-bottom: .35em; }
-      h3{ font-size: 1.1em; margin-bottom: .2em; }
-      .kicker{
-        text-transform: uppercase;
-        letter-spacing: .14em;
-        font-size: .55em;
-        color: var(--muted);
-        margin-bottom: 0.8em;
-      }
-      .subtitle{ color: var(--muted); font-size: 1.05em; max-width: 58ch; }
+  --card: rgba(0,0,0,0.04);
+  --stroke: rgba(0,0,0,0.10);
+  --muted: rgba(0,0,0,0.55);
+}
+
+.reveal{
+  color: #111827;
+}
+
+.reveal .slides{
+  text-align: left;
+}
+
+.reveal section{
+  background: linear-gradient(180deg, rgba(220,38,38,0.06), rgba(255,255,255,0));
+}
+
+.card{
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  padding: .9em 1em;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+}
+
+.callout{
+  margin-top: .8em;
+  padding: .8em 1em;
+  border: 1px solid rgba(220,38,38,0.25);
+  border-radius: 18px;
+  background: rgba(220,38,38,0.06);
+}
+
+.kicker{
+  color: rgba(0,0,0,0.55);
+}
+
+.subtitle, .muted{
+  color: rgba(0,0,0,0.60);
+}
+ }
       .meta{ display:flex; gap:.6em; align-items:center; color: var(--muted); font-size:.65em; margin-top: 1em; }
       .dot{ opacity:.6; }
       .muted{ color: var(--muted); }
