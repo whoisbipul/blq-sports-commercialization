@@ -156,6 +156,22 @@ svg .a{
   left: 18px;
   opacity: 1;
 }
+/* Fix awkward word breaks on big titles */
+.reveal h1, .reveal h2{
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+/* Slightly reduce the giant title size so it fits cleanly */
+.reveal h1{
+  font-size: 2.05em;
+}
+
+/* Make slide layout breathe a bit more on smaller screens */
+.reveal .slides{
+  max-width: 1200px;
+}
 
     </style>
   </head>
